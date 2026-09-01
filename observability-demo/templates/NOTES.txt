@@ -1,0 +1,13 @@
+Observability demo has been deployed.
+
+Image: {{ include "observability-demo.image" . }}
+
+{{- if .Values.route.enabled }}
+
+Get the application URL:
+  oc get route {{ include "observability-demo.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath='https://{.spec.host}{"\n"}'
+{{- else }}
+
+Port-forward to the service:
+  kubectl port-forward svc/{{ include "observability-demo.fullname" . }} 8080:{{ .Values.service.port }} -n {{ .Release.Namespace }}
+{{- end }}

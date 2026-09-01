@@ -1,0 +1,22 @@
+{{- if .Values.route.enabled }}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "observability-demo.fullname" . }}
+  labels:
+    {{- include "observability-demo.labels" . | nindent 4 }}
+  {{- with .Values.route.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  to:
+    kind: Service
+    name: {{ include "observability-demo.fullname" . }}
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: {{ .Values.route.tls.termination }}
+  wildcardPolicy: None
+{{- end }}
