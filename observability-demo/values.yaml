@@ -1,25 +1,19 @@
 replicaCount: 1
-
 nameOverride: ""
 fullnameOverride: ""
-
 image:
   repository: example-registry-quay-openshift-operators.apps.cluster-m8w6t.dyn.redhatworkshops.io/mike/demo
-  tag: "0.0.1"
+  tag: "0.0.7"
   pullPolicy: Always
-
 imagePullSecrets: []
-
 service:
   type: ClusterIP
   port: 8080
-
 route:
   enabled: true
   annotations: {}
   tls:
     termination: edge
-
 resources:
   requests:
     cpu: 250m
@@ -27,18 +21,15 @@ resources:
   limits:
     cpu: "1"
     memory: 512Mi
-
 env:
   otelExporterOtlpEndpoint: "http://localhost:4317"
   quarkusLogLevel: "INFO"
-
 livenessProbe:
   httpGet:
     path: /q/health/live
     port: 8080
   initialDelaySeconds: 10
   periodSeconds: 10
-
 readinessProbe:
   httpGet:
     path: /q/health/ready
