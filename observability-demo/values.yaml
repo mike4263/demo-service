@@ -2,7 +2,7 @@ replicaCount: 1
 nameOverride: ""
 fullnameOverride: ""
 image:
-  repository: example-registry-quay-openshift-operators.apps.cluster-m8w6t.dyn.redhatworkshops.io/mike/demo
+  repository: example-registry-quay-quay.apps.cluster-wf5q5.dyn.redhatworkshops.io/mike/mirror
   tag: "0.0.7"
   pullPolicy: Always
 imagePullSecrets: []
