@@ -3,7 +3,7 @@ nameOverride: ""
 fullnameOverride: ""
 image:
   repository: example-registry-quay-quay.apps.cluster-wf5q5.dyn.redhatworkshops.io/mike/mirror
-  tag: "0.0.7"
+  tag: "0.0.15"
   pullPolicy: Always
 imagePullSecrets: []
 service:
